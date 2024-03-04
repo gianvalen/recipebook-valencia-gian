@@ -1,18 +1,20 @@
-<!-- ledger/templates/recipe_list.html -->
+<!-- recipe_list.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Recipe Book</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Recipes</title>
+    
 </head>
 <body>
-    <h1>Recipe Book</h1>
-    <h2>Recipes List</h2>
+    <h1>Recipes</h1>
     <ul>
-    {% for recipe in recipes %}
-        <li>
-            <a href="{{ recipe.link }}">{{ recipe.name }}</a>
-        </li>
-    {% endfor %}
+        {% for recipe in object_list %}
+            <li><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></li>
+        {% endfor %}
     </ul>
 </body>
 </html>

@@ -9,7 +9,7 @@ class Ingredient(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('ingredient_detail', args=[str(self.pk)])
+        return reverse('ledger:ingredient_detail', args=[str(self.pk)])
     
 
 class Recipe(models.Model):
@@ -19,11 +19,11 @@ class Recipe(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('recipe_detail', args=[str(self.pk)])
+        return reverse('ledger:recipe_detail', args=[str(self.pk)])
     
 
 class RecipeIngredient(models.Model):
-    quantity = models.CharField(max_length=50)
+    quantity = models.CharField(max_length=100)
     ingredient = models.ForeignKey(
         'Ingredient', 
         on_delete=models.CASCADE, 
@@ -34,3 +34,6 @@ class RecipeIngredient(models.Model):
         on_delete=models.CASCADE, 
         related_name = 'ingredients'
     )
+
+    def __str__(self):
+        return '{} of {}'.format(self.quantity, self.ingredient)

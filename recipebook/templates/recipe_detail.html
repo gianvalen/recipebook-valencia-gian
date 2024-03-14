@@ -1,15 +1,9 @@
 <!-- recipe_detail.html -->
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>{{ object.name }}</title>
+{% extends 'base.html' %}
 
-</head>
-<body>
+{% block title %} {{ name }} {% endblock %}
+{% block content %}
     <h1>{{ object.name }}</h1>
     <h2>Ingredients:</h2>
     <ul>
@@ -17,5 +11,4 @@
             <li>{{ ingredient.ingredient.name }}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

@@ -1,11 +1,14 @@
 <!-- login.html -->
 <!DOCTYPE html>
+{% extends 'base.html' %}
 
-<h1>Login</h1>
-<a href="{% url 'password_reset' %}">Forgot password</a>
+{% block content %}
+    <h1>Login</h1>
+    <a href="{% url 'password_reset' %}">Forgot password</a>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}

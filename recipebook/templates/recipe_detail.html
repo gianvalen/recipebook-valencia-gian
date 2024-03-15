@@ -4,11 +4,16 @@
 
 {% block title %} {{ name }} {% endblock %}
 {% block content %}
-    <h1>{{ object.name }}</h1>
-    <h2>Ingredients:</h2>
-    <ul>
-        {% for ingredient in object.ingredients.all %}
-            <li>{{ ingredient.ingredient.name }}</li>
-        {% endfor %}
-    </ul>
+    {% if request.user.is_authenticated %}
+        <h2>{{ object.name }}</h2>
+        <p>Author: {{ object.author.username }}</p>
+        <h3>Ingredients:</h3>
+        <ul>
+            {% for ingredient in object.ingredients.all %}
+                <li>{{ ingredient.ingredient.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You must be logged in to view this content.</p>
+    {% endif %}
 {% endblock %}
